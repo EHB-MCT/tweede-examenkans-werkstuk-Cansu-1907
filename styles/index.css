@@ -1,6 +1,5 @@
 body {
   font-family: sans-serif;
-  padding: 20px;
 }
 
 * {
@@ -12,8 +11,34 @@ main {
   margin: auto;
   display: flex;
 }
-#container {
-  width: 100vw;
-  height:  100vh;
+
+header {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
 }
 
+#container {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+#container article {
+  width: 30%;
+}
+
+#container article figure {
+  width: 100%;
+}
+
+#container article figure img {
+  width: 100%;
+}
+
+.likeContainer {
+  display: flex;
+}
