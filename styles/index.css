@@ -1,11 +1,23 @@
 body {
-  font-family: sans-serif;
+  font-family: "Lato", sans-serif;
+  background-color: #ffffff;
+}
+
+h1,
+h2,
+p,
+strong {
+  color: #424874;
+}
+
+.date,
+.footer {
+  color: #989898;
 }
 
 * {
   margin: 0;
   padding: 0;
-  color: #0d0d0d;
 }
 main {
   margin: auto;
@@ -19,6 +31,15 @@ header {
   justify-content: space-between;
 }
 
+header {
+  margin-top: 50px;
+  margin-bottom: 100px;
+}
+
+header h1 {
+  font-size: 30px;
+}
+
 #container {
   display: flex;
   justify-content: space-between;
@@ -28,7 +49,7 @@ header {
 }
 
 #container article {
-  width: 30%;
+  width: 28%;
 }
 
 #container article figure {
@@ -41,4 +62,99 @@ header {
 
 .likeContainer {
   display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#container article {
+  background-color: #f4eeff;
+  padding: 25px;
+  margin-bottom: 30px;
+  filter: drop-shadow(4px 4px 7px #b8b8b8);
+  height: 100%;
+}
+
+#container article h2 {
+  margin-top: 30px;
+}
+
+.date {
+  margin-top: 5px;
+  margin-bottom: 30px;
+}
+
+.likeContainer p {
+  margin-right: 10px;
+  font-size: 20px;
+}
+
+.likeContainer span {
+  color: #ff8d8d;
+  cursor: pointer;
+}
+
+.likeContainer span:hover {
+  color: #ff4b4b;
+}
+
+footer {
+  width: 80%;
+  margin: auto;
+}
+
+footer p {
+  margin-top: 50px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-size: 18px;
+}
+
+form {
+  display: flex;
+}
+
+form input {
+  padding: 10px;
+  border: 2px solid #424874;
+}
+
+form button {
+  padding: 7px 10px;
+  background-color: #424874;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#filterContainer {
+  /* display: flex;
+  align-items: center; */
+  width: 70%;
+  margin: auto;
+  position: relative;
+  height: 60px;
+}
+
+#test {
+  position: absolute;
+  right: 0;
+  display: flex;
+  /* align-items: center; */
+}
+
+#filterBtn {
+  background-color: #424874;
+}
+
+#filterBtn span {
+  color: #ffffff;
+  padding: 10px;
+  cursor: pointer;
+}
+
+#filterText {
+  color: #424874;
+  background-color: #f4eeff;
+  padding: 10px;
+  font-weight: 700;
 }
