@@ -50,6 +50,7 @@ header h1 {
 
 #container article {
   width: 28%;
+  /* margin: 0 12px; */
 }
 
 #container article figure {
@@ -157,4 +158,8 @@ form button {
   background-color: #f4eeff;
   padding: 10px;
   font-weight: 700;
+}
+
+#logo {
+  cursor: pointer;
 }

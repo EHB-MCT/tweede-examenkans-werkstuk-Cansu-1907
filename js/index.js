@@ -3,20 +3,32 @@
 const blog = {
   artikelsArray: [],
   filterBtn: document.getElementById("filterBtn"),
+  form: document.getElementById("form"),
+  input: document.getElementById("inputForm"),
+  container: document.getElementById("container"),
+  logo: document.getElementById("logo"),
   init() {
     this.getData();
     setTimeout(function () {
       if (blog.artikelsArray.length == 0) {
         console.log("array is empty");
       } else {
-        blog.render();
+        blog.render(blog.artikelsArray);
       }
     }, 500);
+    this.logo.addEventListener("click", (e) => {
+      window.location.reload();
+    });
     this.filterBtn.addEventListener("click", (e) => {
       e.preventDefault();
       this.sortByMostLikes();
       console.log(this.artikelsArray);
-      blog.render();
+      blog.render(blog.artikelsArray);
+    });
+    this.form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      this.searchKeyword();
+      this.container.style.justifyContent = "space-evenly";
     });
   },
 
@@ -24,6 +36,21 @@ const blog = {
     this.artikelsArray.sort((a, b) => {
       return b.likes - a.likes;
     });
+  },
+
+  searchKeyword() {
+    let searchedKeyword = this.input.value;
+    let newArray = [];
+    console.log(searchedKeyword);
+    this.artikelsArray.forEach((element) => {
+      if (
+        element.title.includes(searchedKeyword) ||
+        element.content.includes(searchedKeyword)
+      ) {
+        newArray.push(element);
+      }
+    });
+    this.render(newArray);
   },
 
   // https://stackoverflow.com/questions/4611754/javascript-convert-seconds-to-a-date-object
@@ -56,12 +83,11 @@ const blog = {
       });
   },
 
-  render() {
+  render(array) {
     let htmlString = "";
-    let container = document.getElementById("container");
-    this.artikelsArray.forEach((element) => {
+    array.forEach((element) => {
       htmlString += `
-        <article>
+        <article class='article'>
           <figure>
             <img src="${element.imageURL}" alt="">
           </figure>
@@ -79,7 +105,7 @@ const blog = {
         </article>
         `;
     });
-    container.innerHTML = htmlString;
+    this.container.innerHTML = htmlString;
   },
 };
 
