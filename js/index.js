@@ -1,12 +1,27 @@
 "use strict";
 
+class Artikels {
+  like(id) {
+    console.log(id);
+    fetch("https://thecrew.cc/news/read.php", {
+      method: "POST",
+      body: JSON.stringify({
+        UUID: [id],
+        likes: "10",
+      }),
+    }).then((res) => console.log(res));
+  }
+}
+
 const blog = {
+  artikels: new Artikels(),
   artikelsArray: [],
   filterBtn: document.getElementById("filterBtn"),
   form: document.getElementById("form"),
   input: document.getElementById("inputForm"),
   container: document.getElementById("container"),
   logo: document.getElementById("logo"),
+  likeBtns: [],
   init() {
     this.getData();
     setTimeout(function () {
@@ -14,6 +29,12 @@ const blog = {
         console.log("array is empty");
       } else {
         blog.render(blog.artikelsArray);
+        Array.from(blog.likeBtns).forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            blog.artikels.like(e.target.id);
+          });
+        });
       }
     }, 500);
     this.logo.addEventListener("click", (e) => {
@@ -79,6 +100,7 @@ const blog = {
             )
           );
         });
+
         console.log(this.artikelsArray);
       });
   },
@@ -97,7 +119,7 @@ const blog = {
             <p>${element.content}</p>
             <section class="likeContainer">
               <p>${element.likes}</p>
-              <span class="material-icons">
+              <span id="${element.id}" class="material-icons likeBtn">
                 favorite
                 </span>
             </section>
@@ -106,6 +128,8 @@ const blog = {
         `;
     });
     this.container.innerHTML = htmlString;
+    this.likeBtns = document.querySelectorAll(".likeBtn");
+    // console.log(this.likeBtns);
   },
 };
 
