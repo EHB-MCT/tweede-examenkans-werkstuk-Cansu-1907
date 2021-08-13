@@ -7,7 +7,6 @@ class Artikels {
       method: "POST",
       body: JSON.stringify({
         UUID: [id],
-        likes: "10",
       }),
     }).then((res) => console.log(res));
   }
